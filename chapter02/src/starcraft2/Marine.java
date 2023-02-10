@@ -4,15 +4,7 @@ package starcraft2;
  * @author 김현우
  */
 
-public class Marine {
-
-	private String name;
-	private int power;
-	private int hp;
-	private int maxHp;
-	private int exp;
-	private int maxExp;
-	public boolean isDie;
+public class Marine extends Unit {
 
 	public Marine(String name) {
 		this.name = name;
@@ -21,84 +13,7 @@ public class Marine {
 		this.maxHp = 70;
 		this.exp = 0;
 		this.maxExp = 100;
-	}
-
-	// getter 메서드 만들기
-	public String getName() {
-		return this.name;
-	}
-
-	public int getPower() {
-		return this.power;
-	}
-
-	public int getHp() {
-		return this.hp;
-	}
-	
-	public int getExp() {
-		return this.exp;
-	}
-
-	// 마린이 질럿을 공격 합니다.
-	public void attack(Zealot zealot) {
-		if (zealot.isDie == true) {
-			System.out.println("공격 대상이 없습니다!");
-		} else {
-			System.out.println(this.name + "이 " + zealot.getName() + "을 공격 합니다.");
-			// 여기서 저글링의 공격력은 3
-			zealot.beAttacked(this.power);
-			if (zealot.getHp() <= 0) {
-				System.out.println("적을 처치했습니다!");
-				System.out.println("경험치를 획득합니다 !!");
-				exp += 10;
-				levelUp(exp);
-				zealot.isDie = true;
-			}
-		}
-	}
-
-	// 마린이 저글링을 공격 합니다.
-	public void attack(Zergling zergling) {
-		if (zergling.isDie == true) {
-			System.out.println("공격 대상이 없습니다!");
-		} else {
-			System.out.println(this.name + "이 " + zergling.getName() + "을 공격 합니다.");
-			zergling.beAttacked(this.power);
-			if (zergling.getHp() <= 0) {
-				System.out.println("적을 처치했습니다!");
-				System.out.println("경험치를 획득합니다 !!");
-				exp += 10;
-				levelUp(exp);
-				zergling.isDie = true;
-			}
-		}
-	}
-
-	// 자기 자신이 공격을 당합니다.
-	public void beAttacked(int power) {
-		System.out.println(this.name + "이 공격 당합니다.");
-		this.hp -= power;
-		if (hp <= 0) {
-			unitDie(this);
-		}
-	}
-
-	public void unitDie(Marine marine) {
-		if (this.hp <= 0) {
-			System.out.println(this.name + "이 사망했습니다!");
-			marine = null;
-		}
-	}
-
-	public void levelUp(int getExp) {
-		if (exp >= maxExp) {
-			System.out.println("레벨업!!");
-			exp -= maxExp;
-			maxHp = maxHp + (maxHp / 10);
-			maxExp = maxExp + (maxExp / 10);
-			power = power + (power / 10);
-		}
+		this.level = 1;
 	}
 
 	public void showInfo() {
