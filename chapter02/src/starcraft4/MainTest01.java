@@ -1,4 +1,4 @@
-package starcraft2;
+package starcraft4;
 
 public class MainTest01 {
 
@@ -13,15 +13,15 @@ public class MainTest01 {
 		Zergling zergling2 = new Zergling("저글링2");
 
 		// 질럿이 마린을 공격 - 대상 1, 2
-//		zealot1.attackMarine(marine1);
-//		System.out.println(marine1.getHp());
-		zealot1.attack(marine1);
+		for(int i = 0; i < 16; i++) {
+			zealot1.attack(marine1);
+		}
+		
+		
+		System.out.println(marine1.getHp());
+		zealot1.showInfo();
 		marine1.showInfo();
-		zealot1.attack(marine2);
 		marine2.showInfo();
-//		zealot1.showInfo();
-//		marine1.showInfo();
-//		marine2.showInfo();
 
 	} // end of main
 

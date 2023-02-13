@@ -60,6 +60,7 @@ public abstract class Unit {
 			maxHp = maxHp + (maxHp / 10);
 			maxExp = maxExp + (maxExp / 10);
 			power = power + (power / 10);
+			hp = maxHp;
 		}
 	}
 
