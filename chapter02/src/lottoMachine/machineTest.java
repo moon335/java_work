@@ -12,6 +12,6 @@ public class MachineTest {
 		lottoMachine1.run(human);
 		
 		
-	}
+	} // end of main
 
-}
+} // end of class

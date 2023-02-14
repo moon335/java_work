@@ -3,7 +3,7 @@ package ch01;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-// 좌표 기바으로 컴포넌트들을 배치해보자
+// 좌표 기반으로 컴포넌트들을 배치해보자
 public class NoLayoutEx1 extends JFrame {
 
 	private JButton button1;
@@ -29,7 +29,7 @@ public class NoLayoutEx1 extends JFrame {
 
 	private void setInitLayout() {
 		setLayout(null); // 좌표 기반으로 컴포넌트들을 배치해야 한다.
-		// 좌표 기반으로 세팅을 하면 각 컴포넌트에 크기를 지정해 주어야 한다. 기본값은 0이다.
+		// 좌표 기반으로 세팅을 하면 각 컴포넌트의 크기를 지정해 주어야 한다. 기본값은 0이다.
 		button1.setLocation(100, 100);
 		add(button1);
 		button2.setLocation(200, 150);
