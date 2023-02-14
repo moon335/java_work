@@ -44,11 +44,8 @@ public class MyFramePanel extends JFrame{
 		button3 = new JButton("button3");
 		button3.setSize(100, 100);
 		button4 = new JButton("button4");
-		button4.setSize(30, 10);
 		button5 = new JButton("button5");
-		button5.setSize(30, 10);
 		button6 = new JButton("button6");
-		button6.setSize(30, 10);
 		
 	}
 	
@@ -65,13 +62,10 @@ public class MyFramePanel extends JFrame{
 		button2.setLocation(100, 0);
 		button3.setLocation(200, 0);
 //		panel1.setLayout(null);
-		panel2.setLayout(null);
+		panel2.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		panel2.add(button4);
 		panel2.add(button5);
 		panel2.add(button6);
-		button4.setLocation(510, 400);
-		button5.setLocation(540, 400);
-		button6.setLocation(570, 400);
 		
 		setVisible(true);
 	}
