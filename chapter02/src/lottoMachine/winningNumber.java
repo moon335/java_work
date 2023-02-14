@@ -69,22 +69,22 @@ public class WinningNumber extends LottoMachine {
 				System.out.println("번호를 하나 입력해 주세요.(1 ~ 45까지)");
 				userInputNum = scanner.nextInt();
 				if (userInputNum > 45) {
-					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.");
+					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.(1 ~ 45까지)");
 					userInputNum = scanner.nextInt();
 					userNum[arrNum] = userInputNum;
 					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
-						if (numberArr[arrNum] == numberArr[dupNum]) {
-							arrNum--;
+						if (userNum[arrNum] == userNum[dupNum]) {
 							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							arrNum--;
 							break;
 						}
 					}
 				} else {
 					userNum[arrNum] = userInputNum;
 					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
-						if (numberArr[arrNum] == numberArr[dupNum]) {
-							arrNum--;
+						if (userNum[arrNum] == userNum[dupNum]) {
 							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							arrNum--;
 							break;
 						}
 					}
@@ -93,22 +93,22 @@ public class WinningNumber extends LottoMachine {
 				System.out.println("보너스 번호를 입력해 주세요.(1 ~ 45까지)");
 				userInputNum = scanner.nextInt();
 				if (userInputNum > 45) {
-					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.");
+					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.(1 ~ 45까지)");
 					userInputNum = scanner.nextInt();
 					userNum[arrNum] = userInputNum;
 					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
-						if (numberArr[arrNum] == numberArr[dupNum]) {
-							arrNum--;
+						if (userNum[arrNum] == userNum[dupNum]) {
 							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							arrNum--;
 							break;
 						}
 					}
 				} else {
 					userNum[arrNum] = userInputNum;
 					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
-						if (numberArr[arrNum] == numberArr[dupNum]) {
-							arrNum--;
+						if (userNum[arrNum] == userNum[dupNum]) {
 							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							arrNum--;
 							break;
 						}
 					}
