@@ -5,11 +5,17 @@ public abstract class LottoMachine {
 	private String name;
 	private String shape;
 	private int machineNum;
+	private int count;
 
+	public LottoMachine() {
+		
+	}
+	
 	public LottoMachine(String name, int machineNum) {
 		this.name = name;
 		this.machineNum = machineNum;
 		shape = "둥근 모양의 기계";
+		count = 0;
 	}
 
 	public String getName() {
@@ -37,7 +43,8 @@ public abstract class LottoMachine {
 	}
 
 	public void winningNumber() {
-	};
+		
+	}
 
 	public void turnOn() {
 		System.out.println("로또 기계를 작동합시킵니다.");
@@ -45,6 +52,40 @@ public abstract class LottoMachine {
 
 	public void turnOff() {
 		System.out.println("로또 기계를 종료 시킵니다.");
+	}
+	
+	// 당첨 조회
+	public void result(Human human) {
+		for(int i = 0; i < WinningNumber.numberArr.length; i++) {
+			for(int j = 0; j < WinningNumber.numberArr.length; j++) {
+				if(WinningNumber.numberArr[i] == WinningNumber.userNum[j]) {
+					count++;
+				}
+			}
+		}
+		if(count <= 2) {
+			System.out.println(human.getName() + "님은 아쉽지만 꽝이에요. 다음에 다시 도전하세요");
+		} else if(count == 3) {
+			System.out.println(human.getName() + "님은 5등 당첨! 축하합니다!");
+		} else if(count == 4) {
+			System.out.println(human.getName() + "님은 4등 당첨! 축하합니다!");
+		} else if(count == 5) {
+			System.out.println(human.getName() + "님은 3등 당첨! 축하합니다!");
+		} else if(count == 5 && WinningNumber.numberArr[6] == WinningNumber.userNum[6]) {
+			System.out.println(human.getName() + "님은 2등 당첨! 축하합니다!");
+		} else if(count == 6) {
+			System.out.println(human.getName() + "님은 1등 당첨!!! 축하합니다!!!");
+		}
+	}
+	
+	public abstract void userNumber();
+	
+	public final void run(Human human) {
+		turnOn();
+		userNumber();
+		winningNumber();
+		result(human);
+		turnOff();
 	}
 	
 } // end of class

@@ -1,13 +1,24 @@
 package lottoMachine;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class winningNumber extends LottoMachine {
+public class WinningNumber extends LottoMachine {
 
-	static int[] numberArr = new int[6];
+	static int[] numberArr = new int[7];
+	static int[] userNum = new int[7];
+	private int userInputNum;
 
-	public winningNumber(String name, int machineNum) {
+	public WinningNumber(String name, int machineNum) {
 		super(name, machineNum);
+	}
+
+	public int[] getNumberArr() {
+		return numberArr;
+	}
+
+	public void setNumberArr(int[] numberArr) {
+		this.numberArr = numberArr;
 	}
 
 	// 컴퓨터가 자동으로 추첨번호 만들어서 배열에 넣음
@@ -28,7 +39,7 @@ public class winningNumber extends LottoMachine {
 		// 출력
 		System.out.print("당첨된 번호는: ");
 		for (int printNum = 0; printNum < numberArr.length; printNum++) {
-			if (printNum < 5) {
+			if (printNum < 6) {
 				System.out.print(numberArr[printNum] + " ");
 			} else {
 				System.out.println("보너스 번호는: " + numberArr[printNum]);
@@ -45,6 +56,62 @@ public class winningNumber extends LottoMachine {
 					temp = numberArr[i];
 					numberArr[i] = numberArr[j];
 					numberArr[j] = temp;
+				}
+			}
+		}
+	}
+
+	@Override
+	public void userNumber() {
+		Scanner scanner = new Scanner(System.in);
+		for (int arrNum = 0; arrNum < userNum.length; arrNum++) {
+			if (arrNum < 6) {
+				System.out.println("번호를 하나 입력해 주세요.(1 ~ 45까지)");
+				userInputNum = scanner.nextInt();
+				if (userInputNum > 45) {
+					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.");
+					userInputNum = scanner.nextInt();
+					userNum[arrNum] = userInputNum;
+					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
+						if (numberArr[arrNum] == numberArr[dupNum]) {
+							arrNum--;
+							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							break;
+						}
+					}
+				} else {
+					userNum[arrNum] = userInputNum;
+					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
+						if (numberArr[arrNum] == numberArr[dupNum]) {
+							arrNum--;
+							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							break;
+						}
+					}
+				}
+			} else {
+				System.out.println("보너스 번호를 입력해 주세요.(1 ~ 45까지)");
+				userInputNum = scanner.nextInt();
+				if (userInputNum > 45) {
+					System.out.println("입력 범위를 초과했습니다. 다시 입력해주세요.");
+					userInputNum = scanner.nextInt();
+					userNum[arrNum] = userInputNum;
+					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
+						if (numberArr[arrNum] == numberArr[dupNum]) {
+							arrNum--;
+							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							break;
+						}
+					}
+				} else {
+					userNum[arrNum] = userInputNum;
+					for (int dupNum = 0; dupNum < arrNum; dupNum++) {
+						if (numberArr[arrNum] == numberArr[dupNum]) {
+							arrNum--;
+							System.out.println("중복된 번호입니다 다시 입력해 주세요.");
+							break;
+						}
+					}
 				}
 			}
 		}

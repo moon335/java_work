@@ -1,12 +1,15 @@
 package lottoMachine;
 
-public class machineTest {
+public class MachineTest {
 
 	public static void main(String[] args) {
 		
-		LottoMachine lottoMachine1 = new winningNumber("뽑기", 1);
+		LottoMachine lottoMachine1 = new WinningNumber("뽑기", 1);
 		
-		lottoMachine1.winningNumber();
+		
+		Human human = new Human("김아무개");
+		
+		lottoMachine1.run(human);
 		
 		
 	}
