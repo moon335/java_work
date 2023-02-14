@@ -19,9 +19,7 @@ public class NoLayoutEx2 extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		for(int i = 0; i < buttons.length; i++) {
 			buttons[i] = new JButton(direction[i]);
-		}
-		for(int j = 0; j < buttons.length; j++) {
-			buttons[j].setSize(100, 100);
+			buttons[i].setSize(100, 100);
 		}
 	}
 
