@@ -44,9 +44,7 @@ public abstract class LottoMachine {
 		this.machineNum = machineNum;
 	}
 
-	public void winningNumber() {
-		
-	}
+	public abstract void winningNumber();
 
 	public void turnOn() {
 		System.out.println("로또 기계를 작동합시킵니다.");
