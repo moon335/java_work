@@ -16,7 +16,6 @@ public class MoveImage extends JFrame implements Moveable{
 	
 	private JLabel labelImage;
 	private JLabel labelImage2;
-	private JLabel labelImage3;
 	private int labelImageX;
 	private int labelImageY;
 	
