@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class LottoFrame extends JFrame {
 	// 화면을 담당 !!
@@ -58,7 +59,8 @@ public class LottoFrame extends JFrame {
 		int x = 50;
 		for(int i = 0; i < number.getLottoNumber().length; i++) {
 			g.drawString(number.getLottoNumber()[i] + "", x, 200);
-			x += 100;
+			g.drawOval((x - 25), 155, 70, 70);
+			x += 80;
 		}
 	}
 
