@@ -1,6 +1,7 @@
-package ex04;
+package ex05;
 
 import javax.swing.ImageIcon;
+
 import javax.swing.JLabel;
 
 public class Player extends JLabel implements Moveable {

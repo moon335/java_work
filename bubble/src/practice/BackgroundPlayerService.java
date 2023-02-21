@@ -1,4 +1,4 @@
-package ex04;
+package practice;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -45,6 +45,7 @@ public class BackgroundPlayerService implements Runnable {
 			// 하얀색이 아니면 바닥이다.
 			if(bottomColorLeft + bottomColorRight != -2) {
 				player.setDown(false);
+				player.setJumped(false);
 				// 바닥이면 isDown --> true
 			} else {
 				// 조금 점프하는 순간 bottomColorLeft -> -1이 된다.
