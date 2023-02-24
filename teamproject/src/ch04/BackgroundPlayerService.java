@@ -1,4 +1,4 @@
-package ch02;
+package ch04;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

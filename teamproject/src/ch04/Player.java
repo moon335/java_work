@@ -1,4 +1,4 @@
-package ch01;
+package ch04;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -23,10 +23,55 @@ public class Player extends JLabel {
 
 	// player 속도 상태
 	private final int SPEED = 5;
+	
+	// 벽 충돌 상태
+	private boolean leftWallCrash;
+	private boolean rightWallCrash;
+	private boolean topWallCrash;
+	private boolean bottomWallCrash;
+	
+	// player가 보는 방향
+	PlayerWay pWay;
 
 	public Player() {
 		initData();
 		setInitLayout();
+	}
+
+	public PlayerWay getpWay() {
+		return pWay;
+	}
+
+	public boolean isLeftWallCrash() {
+		return leftWallCrash;
+	}
+
+	public void setLeftWallCrash(boolean leftWallCrash) {
+		this.leftWallCrash = leftWallCrash;
+	}
+
+	public boolean isRightWallCrash() {
+		return rightWallCrash;
+	}
+
+	public void setRightWallCrash(boolean rightWallCrash) {
+		this.rightWallCrash = rightWallCrash;
+	}
+
+	public boolean isTopWallCrash() {
+		return topWallCrash;
+	}
+
+	public void setTopWallCrash(boolean topWallCrash) {
+		this.topWallCrash = topWallCrash;
+	}
+
+	public boolean isBottomWallCrash() {
+		return bottomWallCrash;
+	}
+
+	public void setBottomWallCrash(boolean bottomWallCrash) {
+		this.bottomWallCrash = bottomWallCrash;
 	}
 
 	public int getX() {
@@ -86,56 +131,69 @@ public class Player extends JLabel {
 		right = false;
 		up = false;
 		down = false;
+		leftWallCrash = false;
+		rightWallCrash = false;
+		topWallCrash = false;
+		bottomWallCrash = false;
+		pWay = PlayerWay.RIGHT;
 	}
 
 	private void setInitLayout() {
-		x = 300;
-		y = 300;
-		setSize(50, 50);
+		x = 75;
+		y = 315;
+		setSize(40, 40);
 		setLocation(x, y);
 		setIcon(playerR);
 	}
-
+	
 	public void initThread() {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				if (left) {
+					pWay = PlayerWay.LEFT;
+					setIcon(playerL);
 					while (left) {
 						x = x - SPEED;
 						setLocation(x, y);
 						try {
-							Thread.sleep(5);
+							Thread.sleep(15);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
 				} else if(right) {
+					pWay = PlayerWay.RIGHT;
+					setIcon(playerR);
 					while (right) {
 						x = x + SPEED;
 						setLocation(x, y);
 						try {
-							Thread.sleep(5);
+							Thread.sleep(15);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
 				} else if (up) {
+					pWay = PlayerWay.UP;
+					setIcon(playerU);
 					while (up) {
 						y = y - SPEED;
 						setLocation(x, y);
 						try {
-							Thread.sleep(5);
+							Thread.sleep(15);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
 				} else if (down) {
+					pWay = PlayerWay.DOWN;
+					setIcon(playerD);
 					while (down) {
 						y = y + SPEED;
 						setLocation(x, y);
 						try {
-							Thread.sleep(5);
+							Thread.sleep(15);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
@@ -147,6 +205,7 @@ public class Player extends JLabel {
 	}
 
 //	public void left() {
+//		pWay = PlayerWay.LEFT;
 //		left = true;
 //		setIcon(playerL);
 //		new Thread(new Runnable() {
@@ -156,7 +215,7 @@ public class Player extends JLabel {
 //					x = x - SPEED;
 //					setLocation(x, y);
 //					try {
-//						Thread.sleep(5);
+//						Thread.sleep(15);
 //					} catch (InterruptedException e) {
 //						e.printStackTrace();
 //					}
@@ -164,8 +223,9 @@ public class Player extends JLabel {
 //			}
 //		}).start();
 //	}
-
+//
 //	public void right() {
+//		pWay = PlayerWay.RIGHT;
 //		right = true;
 //		setIcon(playerR);
 //		new Thread(new Runnable() {
@@ -175,17 +235,19 @@ public class Player extends JLabel {
 //					x = x + SPEED;
 //					setLocation(x, y);
 //					try {
-//						Thread.sleep(5);
+//						Thread.sleep(15);
 //					} catch (InterruptedException e) {
 //						e.printStackTrace();
 //					}
-//				}
+//				}				
 //			}
 //		}).start();
 //	}
-//
+
 //	public void up() {
+////		System.out.println("위로 보는중");
 //		up = true;
+//		pWay = PlayerWay.UP;
 //		setIcon(playerU);
 //		new Thread(new Runnable() {
 //			@Override
@@ -194,7 +256,7 @@ public class Player extends JLabel {
 //					y = y - SPEED;
 //					setLocation(x, y);
 //					try {
-//						Thread.sleep(5);
+//						Thread.sleep(15);
 //					} catch (InterruptedException e) {
 //						e.printStackTrace();
 //					}
@@ -204,8 +266,10 @@ public class Player extends JLabel {
 //	}
 //
 //	public void down() {
-//		down = true;
+////		System.out.println("아래로 보는중");
+//		pWay = PlayerWay.DOWN;
 //		setIcon(playerD);
+//		down = true;
 //		new Thread(new Runnable() {
 //			@Override
 //			public void run() {
@@ -213,11 +277,11 @@ public class Player extends JLabel {
 //					y = y + SPEED;
 //					setLocation(x, y);
 //					try {
-//						Thread.sleep(5);
+//						Thread.sleep(15);
 //					} catch (InterruptedException e) {
 //						e.printStackTrace();
 //					}
-//				}
+//				}				
 //			}
 //		}).start();
 //	}

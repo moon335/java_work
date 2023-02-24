@@ -1,4 +1,4 @@
-package ch02;
+package ch03;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 
 public class BackgroundPlayerService implements Runnable{
 	
@@ -40,23 +39,23 @@ public class BackgroundPlayerService implements Runnable{
 //			System.out.println("아래" +bottomColorX);
 //			System.out.println(player.getX() + "z" + player.getY());
 			
-			if(((rightColor.getRed() == 255 && rightColor.getGreen() == 0 && rightColor.getBlue() == 0) && player.getpWay() == PlayerWay.RIGHT) 
-					|| ((rightColorX.getRed() == 255 && rightColorX.getGreen() == 0 && rightColorX.getBlue() == 0) && player.getpWay() == PlayerWay.RIGHT)) {
+			if((rightColor.getRed() == 255 && rightColor.getGreen() == 0 && rightColor.getBlue() == 0) && player.getpWay() == PlayerWay.RIGHT 
+					|| (rightColorX.getRed() == 255 && rightColorX.getGreen() == 0 && rightColorX.getBlue() == 0)) {
 				player.setRight(false);
 				player.setRightWallCrash(true);
 //				System.out.println("오른쪽 벽에 부딪힘");
-			} else if((leftColor.getRed() == 255 && leftColor.getGreen() == 0 && leftColor.getBlue() == 0 && player.getpWay() == PlayerWay.LEFT)
-					|| ((leftColorX.getRed() == 255 && leftColorX.getGreen() == 0 && leftColorX.getBlue() == 0) && player.getpWay() == PlayerWay.LEFT)) {
+			} else if(leftColor.getRed() == 255 && leftColor.getGreen() == 0 && leftColor.getBlue() == 0 && player.getpWay() == PlayerWay.LEFT
+					|| (leftColorX.getRed() == 255 && leftColorX.getGreen() == 0 && leftColorX.getBlue() == 0)) {
 				player.setLeft(false);
 				player.setLeftWallCrash(true);
 //				System.out.println("왼쪽 벽에 부딪힘");
-			} else if((topColor.getRed() == 255 && topColor.getGreen() == 0 && topColor.getBlue() == 0 && player.getpWay() == PlayerWay.UP) 
-					|| ((topColorX.getRed() == 255 && topColorX.getGreen() == 0 && topColorX.getBlue() == 0) && player.getpWay() == PlayerWay.UP)){
+			} else if(topColor.getRed() == 255 && topColor.getGreen() == 0 && topColor.getBlue() == 0 
+					|| (topColorX.getRed() == 255 && topColorX.getGreen() == 0 && topColorX.getBlue() == 0) && player.getpWay() == PlayerWay.UP){
 				player.setUp(false);
 				player.setTopWallCrash(true);
 //				System.out.println("위쪽에 부딪힘");
-			} else if ((bottomColor.getRed() == 255 && bottomColor.getGreen() == 0 && bottomColor.getBlue() == 0 && player.getpWay() == PlayerWay.DOWN)
-					|| ((bottomColorX.getRed() == 255 && bottomColorX.getGreen() == 0 && bottomColorX.getBlue() == 0) && player.getpWay() == PlayerWay.DOWN)) {
+			} else if (bottomColor.getRed() == 255 && bottomColor.getGreen() == 0 && bottomColor.getBlue() == 0
+					|| (bottomColorX.getRed() == 255 && bottomColorX.getGreen() == 0 && bottomColorX.getBlue() == 0) && player.getpWay() == PlayerWay.DOWN) {
 				player.setDown(false);
 				player.setBottomWallCrash(true);
 //				System.out.println("아래쪽에 부딪힘");

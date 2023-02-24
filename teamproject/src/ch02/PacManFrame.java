@@ -1,6 +1,7 @@
 package ch02;
 
 import java.awt.event.KeyAdapter;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,7 +22,7 @@ public class PacManFrame extends JFrame{
 	}
 	
 	public void initDaya() {
-		background = new JLabel(new ImageIcon("images/background5.png"));
+		background = new JLabel(new ImageIcon("images/backgroundMap4.png"));
 		setTitle("팩맨");
 		setContentPane(background);
 		setSize(800, 800);

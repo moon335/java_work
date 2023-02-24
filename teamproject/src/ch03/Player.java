@@ -1,4 +1,4 @@
-package ch02;
+package ch03;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -187,7 +187,6 @@ public class Player extends JLabel {
 	}
 
 	public void up() {
-//		System.out.println("위로 보는중");
 		pWay = PlayerWay.UP;
 		up = true;
 		setIcon(playerU);
@@ -208,7 +207,6 @@ public class Player extends JLabel {
 	}
 
 	public void down() {
-//		System.out.println("아래로 보는중");
 		pWay = PlayerWay.DOWN;
 		down = true;
 		setIcon(playerD);
