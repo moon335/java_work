@@ -1,9 +1,8 @@
-package ch11;
+package ch01;
 
 public class Score {
 	private int score = 0;
-	
-	
+
 	public int getScore() {
 		return score;
 	}
@@ -13,9 +12,9 @@ public class Score {
 	}
 
 	public Score() {
-		
+
 	}
-	
+
 	public int scoreUp() {
 		this.score += 50;
 		return score;
