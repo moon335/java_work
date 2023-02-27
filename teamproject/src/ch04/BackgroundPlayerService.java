@@ -77,7 +77,7 @@ public class BackgroundPlayerService implements Runnable{
 //				player.setBottomWallCrash(false);
 //			}
 			try {
-				Thread.sleep(3);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

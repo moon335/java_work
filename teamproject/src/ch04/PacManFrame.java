@@ -50,13 +50,14 @@ public class PacManFrame extends JFrame{
 				case KeyEvent.VK_RIGHT:
 					if(!player.isRight() && !player.isRightWallCrash()) {
 						player.setRight(true);
-						player.initThread();
+						player.initThread();	
 					}
 					break;
 				case KeyEvent.VK_UP:
 					if(!player.isUp() && !player.isTopWallCrash()) {
 						player.setUp(true);
 						player.initThread();
+					
 					}
 					break;
 				case KeyEvent.VK_DOWN:
@@ -66,6 +67,7 @@ public class PacManFrame extends JFrame{
 					}
 					break;
 				}
+				
 			}
 			
 			@Override
