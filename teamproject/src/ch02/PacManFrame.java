@@ -22,7 +22,7 @@ public class PacManFrame extends JFrame{
 	}
 	
 	public void initDaya() {
-		background = new JLabel(new ImageIcon("images/backgroundMap4.png"));
+		background = new JLabel(new ImageIcon("images/backgroundMapService(2).png"));
 		setTitle("팩맨");
 		setContentPane(background);
 		setSize(800, 800);
