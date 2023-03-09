@@ -1,4 +1,4 @@
-package ch02;
+package ch03;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class DBClient {
 	
 	private static final String DB_HOST = "localhost";
 	private static final int DB_PORT = 3306;
-	private static String DB_NAME = "mydb";
+	private static String DB_NAME = "employees";
 	private static final String DB_CHARSET = "UTF-8";
 	private static final String DB_USER_NAME = "root";
 	private static final String DB_PASSWORD = "1234";
