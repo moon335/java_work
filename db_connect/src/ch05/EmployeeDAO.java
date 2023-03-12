@@ -1,6 +1,7 @@
 package ch05;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -133,6 +134,94 @@ public class EmployeeDAO implements IEmployeeDAO{
 		}
 		
 		return resultRowcount;
+	}
+
+	@Override
+	public ArrayList<EmployeeDTO> select() {
+		
+		ArrayList<EmployeeDTO> list = new ArrayList<>();
+		
+		String sql = "SELECT * "
+				+ "FROM employees";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String empNo = rs.getString("emp_no");
+				String birthDate = rs.getString("birth_date");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String gender = rs.getString("gender");
+				String hireDate = rs.getString("hire_date");
+				EmployeeDTO dto = new EmployeeDTO(empNo, birthDate, firstName, lastName, gender, hireDate);
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public void delete(String empNo) {
+		
+		String sql = "DELETE FROM employees WHERE emp_no = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
+	public int update(String targetEmpNo, EmployeeDTO dto) {
+		
+		String sql = "UPDATE employees "
+				+ " SET birth_date = ?, first_name = ?, last_name = ?,  "
+				+ "	gender = ?, hire_date = ? "
+				+ " WHERE emp_no = ? ";
+		
+		int resultRow = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getBirthDate());
+			pstmt.setString(2, dto.getFirstName());
+			pstmt.setString(3, dto.getLastName());
+			pstmt.setString(4, dto.getGender());
+			pstmt.setString(5, dto.getHireDate());
+			
+			resultRow = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return resultRow;
 	}
 	
 	

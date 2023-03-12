@@ -15,4 +15,13 @@ public interface IEmployeeDAO {
 	// insert
 	int insert(EmployeeDTO dto);
 	
+	// 조회
+	ArrayList<EmployeeDTO> select();
+	
+	// 삭제
+	void delete(String empNo);
+	
+	// 수정
+	int update(String targetEmpNo, EmployeeDTO dto);
+	
 } // end of interface
