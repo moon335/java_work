@@ -141,8 +141,7 @@ public class EmployeeDAO implements IEmployeeDAO{
 		
 		ArrayList<EmployeeDTO> list = new ArrayList<>();
 		
-		String sql = "SELECT * "
-				+ "FROM employees";
+		String sql = "SELECT * FROM employees LIMIT 10;";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -173,13 +172,17 @@ public class EmployeeDAO implements IEmployeeDAO{
 	}
 
 	@Override
-	public void delete(String empNo) {
+	public int delete(String empNo) {
 		
 		String sql = "DELETE FROM employees WHERE emp_no = ?";
+		
+		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, empNo);
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -190,6 +193,7 @@ public class EmployeeDAO implements IEmployeeDAO{
 			}
 		}
 		
+		return result;
 	}
 
 	@Override
@@ -209,6 +213,7 @@ public class EmployeeDAO implements IEmployeeDAO{
 			pstmt.setString(3, dto.getLastName());
 			pstmt.setString(4, dto.getGender());
 			pstmt.setString(5, dto.getHireDate());
+			pstmt.setString(6, targetEmpNo);
 			
 			resultRow = pstmt.executeUpdate();
 		} catch (SQLException e) {
