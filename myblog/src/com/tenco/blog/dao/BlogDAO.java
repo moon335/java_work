@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.tenco.blog.dto.BlogDTO;
 import com.tenco.blog.utils.DBHelper;
 
 public class BlogDAO implements IBlogDAO{
@@ -38,8 +39,29 @@ public class BlogDAO implements IBlogDAO{
 	}
 
 	@Override
-	public void select() {
+	public BlogDTO select(int boardId) {
 		
+		String query = "SELECT * FROM board WHERE id = ? ";
+		BlogDTO dto = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BlogDTO blogDTO = new BlogDTO();
+				blogDTO.setId(rs.getInt("id"));
+				blogDTO.setTitle(rs.getString("title"));
+				blogDTO.setContent(rs.getString("content"));
+				blogDTO.setReadCount(rs.getInt("readCount"));
+				blogDTO.setUserId(rs.getInt("userId"));
+				
+				dto = blogDTO;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override

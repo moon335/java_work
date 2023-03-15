@@ -1,5 +1,6 @@
 package com.tenco.blog.controller;
 
+import com.tenco.blog.dto.BlogDTO;
 import com.tenco.blog.service.BlogService;
 
 public class BlogController {
@@ -25,6 +26,13 @@ public class BlogController {
 	// 게시글 삭제 요청 받기
 	public void requestBoardDelete(int boardId, int userId) {
 		blogService.deleteBoard(boardId, userId);
+	}
+	
+	// 특정 게시글 검색 요청 받기
+	public BlogDTO requestBoardSelect(int boardId) {
+		BlogDTO dto = blogService.selectByBoardId(boardId);
+		
+		return dto;
 	}
 	
 } // end of class

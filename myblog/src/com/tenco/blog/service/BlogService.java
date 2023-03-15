@@ -35,7 +35,7 @@ public class BlogService {
 	
 	// 하나의 게시글을 찾는 로직 구현
 	public BlogDTO selectByBoardId(int boardId) {
-		BlogDTO blogDTO = null;
+		BlogDTO blogDTO = blogDAO.select(boardId);
 		// blogDao.select() 호출 예정 --> 응답 Result --> 클래스화 처리(DTO)
 		return blogDTO;
 	}
