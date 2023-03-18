@@ -39,8 +39,6 @@ public class OrderFrame extends JFrame{
 		initData();
 		setInitLayout();
 		addEventListener();
-		System.out.println(LoginFrame.getLogindto().getUserId());
-		System.out.println(LoginFrame.getLogindto().getId());
 	}
 	
 	private void initData() {

@@ -89,7 +89,7 @@ public class OrderDto {
 	}
 	@Override
 	public String toString() {
-		return "상품명: " + prodname + "가격: " + price + " 주문 수량:" + amount;
+		return "상품명: " + prodname + " 가격: " + price + " 주문 수량:" + amount;
 	}
 	
 	
