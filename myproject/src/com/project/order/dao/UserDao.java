@@ -29,6 +29,7 @@ public class UserDao implements IUserDao{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				dto.setId(rs.getInt("id"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setPassword(rs.getString("password"));
 				dto.setUserName(rs.getString("userName"));
@@ -53,6 +54,7 @@ public class UserDao implements IUserDao{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				dto.setId(rs.getInt("id"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setPassword(rs.getString("password"));
 				dto.setUserName(rs.getString("userName"));

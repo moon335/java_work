@@ -17,8 +17,8 @@ import javax.swing.JTextField;
 import com.project.order.controller.UserController;
 import com.project.order.dto.UserDto;
 
-public class LoginFrame extends JFrame{
-	
+public class LoginFrame extends JFrame {
+
 	private JTextField jTextField1;
 	private JPasswordField jTextField2;
 	private JButton button1;
@@ -26,14 +26,14 @@ public class LoginFrame extends JFrame{
 	private UserController controller;
 	private LoginFrame frame = this;
 	private Image image;
-	
-	
+	private static UserDto logindto;
+
 	public LoginFrame() {
 		initData();
 		setInitLayout();
 		addEventListener();
 	}
-	
+
 	private void initData() {
 		setTitle("로그인");
 		setSize(600, 600);
@@ -52,7 +52,6 @@ public class LoginFrame extends JFrame{
 
 	private void setInitLayout() {
 		setLayout(null);
-		setLayout(null);
 		add(jTextField1);
 		add(jTextField2);
 		add(button1);
@@ -61,48 +60,55 @@ public class LoginFrame extends JFrame{
 		jTextField2.setLocation(200, 250);
 		button1.setLocation(310, 250);
 		button2.setLocation(390, 250);
-		
+
 		setResizable(false);
 		setVisible(true);
 	}
-	
 
-		@Override
-		public void paint(Graphics g) {
-			super.paint(g);
-			Font font = new Font("CookieRun", Font.BOLD, 25);
-			g.drawImage(image, 350, 170, 100, 100, null);
-			g.setFont(font);
-			g.drawString("배달시켜먹자", 200, 230);
-		}
 
-	
 	public void addEventListener() {
 		button1.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String result = controller.requestSignIn(jTextField1.getText(), jTextField2.getText());
-				if(result.equals("로그인에 성공했습니다.")) {
-					new OrderFrame(frame);
+				if (result.equals("로그인에 성공했습니다.")) {
+					logindto = controller.requestUserInfo(jTextField1.getText(), jTextField2.getText());
+					new OrderFrame();
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(frame, "아이디와 비밀번호를 확인해주세요.");
 				}
 			}
 		});
-		
+
 		button2.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SignUpFrame();
 			}
 		});
 	}
+
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		Font font = new Font("CookieRun", Font.BOLD, 25);
+		g.drawImage(image, 350, 170, 100, 100, null);
+		g.setFont(font);
+		g.drawString("배달시켜먹자", 200, 230);
+	}
 	
+	public static UserDto getLogindto() {
+		return logindto;
+	}
+
+	public static void setLogindto(UserDto logindto) {
+		LoginFrame.logindto = logindto;
+	}
+
 	public static void main(String[] args) {
 		new LoginFrame();
 	}
-	
+
 } // end of class
