@@ -67,10 +67,17 @@ public class CompleteFrame extends JFrame{
 		g.drawString(nowDateTime.format(dateTimeFormatter), 140, 160);
 		OrderDto resultPriceAndAmount = orderController.requestAllPriceAndSum(mContext.getLogindto().getId());
 		if(mContext2.getList().size() == 1) {
-			g.drawString("주문하신 메뉴는", 30, 190);
-			g.drawString(mContext2.getList().get(0).getProdname() + " 입니다.", 188, 190);
-			g.drawString("결제금액", 30, 220);
-			g.drawString(orderController.requestAllPriceAndSum(mContext.getLogindto().getId()).getTotalPrice() + "원", 120, 220);
+			if(mContext2.getList().get(0).getAmount() == 1) {
+				g.drawString("주문하신 메뉴는", 30, 190);
+				g.drawString(mContext2.getList().get(0).getProdname() + " 입니다.", 188, 190);
+				g.drawString("결제금액", 30, 220);
+				g.drawString(orderController.requestAllPriceAndSum(mContext.getLogindto().getId()).getTotalPrice() + "원", 120, 220);
+			} else {
+				g.drawString("주문하신 메뉴는", 30, 190);
+				g.drawString(mContext2.getList().get(0).getProdname() + " " + mContext2.getList().get(0).getAmount() + "개 입니다.", 188, 190);
+				g.drawString("결제금액", 30, 220);
+				g.drawString(orderController.requestAllPriceAndSum(mContext.getLogindto().getId()).getTotalPrice() + "원", 120, 220);
+			}
 		} else {
 			g.drawString("주문하신 메뉴는", 30, 190);
 			g.drawString(mContext2.getList().get(0).getProdname() + "외 " + resultPriceAndAmount.getAllAmount() + "개 입니다.", 188, 190);
