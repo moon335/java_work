@@ -87,11 +87,4 @@ public class UserDao implements IUserDao{
 		}
 		return resultRow;
 	}
-
-	@Override
-	public UserDto select(int id) {
-		// 추후 구현 예정
-		return null;
-	}
-	
 } // end of class
