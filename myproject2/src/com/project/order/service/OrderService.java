@@ -45,9 +45,4 @@ public class OrderService {
 		return result;
 	}
 	
-	public OrderDto selectAllPriceAndSum(int userId) {
-		OrderDto resultSum = orderDao.selectAmountAndSum(userId);
-		return resultSum;
-	}
-	
 } // end of class

@@ -64,28 +64,6 @@ public class ProdDao implements IProdDao{
 		
 		return dto;
 	}
-
-	@Override
-	public ProdDto select(int prodId) {
-		ProdDto dto = new ProdDto();
-		String query = "SELECT * FROM product WHERE id = ? ";
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, prodId);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				dto.setId(rs.getInt("id"));
-				dto.setName(rs.getString("name"));
-				dto.setPrice(rs.getInt("price"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return dto;
-	}
 	
 	
 } // end of class

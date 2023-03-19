@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.project.order.controller.ProdController;
 import com.project.order.dto.OrderDto;
-import com.project.order.dto.ProdDto;
 import com.project.order.utils.DBHelper;
 
 public class OrderDao implements IOrderDao{
@@ -16,27 +14,22 @@ public class OrderDao implements IOrderDao{
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private ProdController prodController;
 	
 	public OrderDao() {
 		conn = DBHelper.getInstance().getConnection();
-		prodController = new ProdController();
 	}
 
 	@Override
 	public int insertOrder(int userId, int prodId, int amount) {
 		int resultRow = 0;
-		int price = prodController.requestOneProduct(prodId).getPrice();
-		String query = " INSERT INTO `order`(userId, prodId, orderDate, amount, priceSum) "
+		String query = " INSERT INTO `order`(userId, prodId, orderDate, amount) "
 				+ " VALUES "
-				+ "	(?, ?, now(), ?, (? * ?)) ";
+				+ "	(?, ?, now(), ?) ";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, userId);
 			pstmt.setInt(2, prodId);
 			pstmt.setInt(3, amount);
-			pstmt.setInt(4, price);
-			pstmt.setInt(5, amount);
 			resultRow = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,31 +101,6 @@ public class OrderDao implements IOrderDao{
 			e.printStackTrace();
 		}
 		return resultRow;
-	}
-
-	@Override
-	public OrderDto selectAmountAndSum(int userId) {
-		OrderDto dto = new OrderDto();
-		String query = "SELECT count(amount) - 1 as '총 수량', sum(priceSum) as '합 금액' "
-				+ " FROM `order` as o "
-				+ " INNER JOIN product as p "
-				+ " ON o.prodId = p.id "
-				+ " WHERE o.userId = ? ";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, userId);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				dto.setAllAmount(rs.getInt("총 수량"));
-				dto.setTotalPrice(rs.getInt("합 금액"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return dto;
 	}
 
 } // end of class

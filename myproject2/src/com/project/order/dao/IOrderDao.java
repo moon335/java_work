@@ -14,6 +14,4 @@ public interface IOrderDao {
 	
 	int deleteAllByUserId(int userId);
 	
-	OrderDto selectAmountAndSum(int userId);
-	
 } // end of class

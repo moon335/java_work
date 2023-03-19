@@ -14,9 +14,6 @@ public class OrderDto {
 	private String userName;
 	private String address;
 	private String tel;
-	private int priceSum;
-	private int allAmount;
-	private int totalPrice;
 	
 	public int getId() {
 		return id;
@@ -90,25 +87,6 @@ public class OrderDto {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getAllAmount() {
-		return allAmount;
-	}
-	public void setAllAmount(int allAmount) {
-		this.allAmount = allAmount;
-	}
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	public int getPriceSum() {
-		return priceSum;
-	}
-	public void setPriceSum(int priceSum) {
-		this.priceSum = priceSum;
-	}
-	
 	@Override
 	public String toString() {
 		return "상품명: " + prodname + " 가격: " + price + " 주문 수량:" + amount;

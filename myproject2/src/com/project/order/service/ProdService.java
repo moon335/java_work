@@ -23,9 +23,4 @@ public class ProdService {
 		return result;
 	}
 	
-	public ProdDto selectOneProduct(int prodInt) {
-		ProdDto result = dao.select(prodInt);
-		return result;
-	}
-	
 } // end of class

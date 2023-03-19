@@ -37,11 +37,5 @@ public class OrderController {
 		return responseCencel;
 	}
 	
-	// 주문 수량과 총 금액 조회 요청
-	public OrderDto requestAllPriceAndSum(int userId) {
-		OrderDto responseSum = orderService.selectAllPriceAndSum(userId);
-		return responseSum;
-	}
-	
 	
 } // end of class

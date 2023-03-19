@@ -17,14 +17,8 @@ public class ProdController {
 		ArrayList<ProdDto> response = prodService.selectAllProduct();
 		return response;
 	}
-	
 	public ProdDto requestOneProduct(String prodname) {
 		ProdDto responseDto = prodService.selectOneProduct(prodname);
-		return responseDto;
-	}
-	
-	public ProdDto requestOneProduct(int prodId) {
-		ProdDto responseDto = prodService.selectOneProduct(prodId);
 		return responseDto;
 	}
 	
